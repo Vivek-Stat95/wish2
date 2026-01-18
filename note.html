@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A Little Note</title>
+
+<style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, #fff0f6, #ffe6f0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font_weight: 500;
+    }
+
+   h1, h2 {
+      font-weight:700;
+    }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #fff0f6, #ffe6f0);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .top {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bottom {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 38px;
+    margin-bottom: 20px;
+  }
+
+  .note {
+    background: linear-gradient(180deg, #ffd1e8, #ffc0dc);
+    border-radius: 18px;
+    padding: 30px 20px;
+    color: #5a0033;
+    box-shadow: 0 0 35px rgba(255, 90, 150, 0.4);
+    cursor: pointer;
+  }
+
+  .heart {
+    font-size: 40px;
+    margin-bottom: 10px;
+    animation: beat 1.2s infinite;
+  }
+
+  @keyframes beat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  .tap {
+    opacity: 0.7;
+  }
+
+  .content {
+    display: none;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 15px;
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .questions {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .q-box {
+    flex: 1;
+    background: rgba(255,255,255,0.6);
+    border-radius: 18px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(255,105,180,0.25);
+  }
+
+  .q-box h3 {
+    color: #ff4d6d;
+  }
+
+  .q-box button {
+    margin-top: 15px;
+    padding: 10px 22px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(90deg, #ff7abf, #ff3d9a);
+    color: white;
+    cursor: pointer;
+  }
+
+  .hidden-img {
+    display: none;
+    margin-top: 15px;
+  }
+
+  .hidden-img img {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  @media (max-width: 700px) {
+    .questions {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO FOR TOP PART -->
+<audio id="noteMusic">
+  <source src="sound2.mp3" type="audio/mp3">
+</audio>
+
+<div class="page">
+
+  <!-- TOP HALF -->
+  <div class="top">
+    <div class="container">
+      <h1>A little note for you</h1>
+
+      <div class="note" onclick="openNote()">
+        <div class="heart">💖</div>
+        <div class="tap" id="tap">Tap to open</div>
+
+        <div class="content" id="content">
+          <p>IDK: I don't know</p>
+          <p>TBH: To be honest</p>
+          <p>NGL: Not gonna lie</p>
+          <p>BTW: तेरे आगे फीके फीके सारे श्रृंगार हैं</p>
+          <p>मै तो क्या फ़रिश्ते भी तुझपे निसार हैं</p>
+        </div>
+      </div>
+
+      <h1>Final feedback de dijiye</h1>
+      <h2>Aapko Kaisa lga?</h2>
+    </div>
+  </div>
+
+  <!-- BOTTOM HALF -->
+  <div class="bottom">
+    <div class="questions">
+
+      <div class="q-box">
+        <h3>Accha 😊</h3>
+        <button onclick="showImg('img1')">To ye lijiye 💌</button>
+        <div class="hidden-img" id="img1">
+          <img src="image1.jpg">
+        </div>
+      </div>
+
+      <div class="q-box">
+        <h3>Ganda 😡</h3>
+        <button onclick="showImg('img2')">Laat maarne ka mn kr rha, maar liijiye &#128549</button>
+        <div class="hidden-img" id="img2">
+          <img src="image2.jpg">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function openNote() {
+  document.getElementById("tap").style.display = "none";
+  document.getElementById("content").style.display = "block";
+
+  const music = document.getElementById("noteMusic");
+  music.currentTime = 0;
+  music.play();
+}
+
+function showImg(id) {
+  document.getElementById(id).style.display = "block";
+}
+</script>
+
+</body>
+</html>

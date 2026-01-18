@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Just you💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #fff0f6, #ffd6e8);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* START OVERLAY */
+#startOverlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #fff0f6, #ffd6e8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.startBox {
+  background: white;
+  padding: 30px 55px;
+  border-radius: 28px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(255,105,180,0.45);
+  cursor: pointer;
+}
+
+.startBox p {
+  margin: 10px 0 0;
+  font-size: 18px;
+  color: #ff3d9a;
+}
+
+.heart {
+  font-size: 48px;
+  animation: beat 1.2s infinite;
+}
+
+@keyframes beat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+/* MAIN CONTENT */
+.wrapper {
+  max-width: 1100px;
+  width: 90%;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 46px;
+  color: #ff3d9a;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #7a003c;
+  margin-bottom: 35px;
+  font-size: 16px;
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: linear-gradient(180deg, #ffffff, #ffe6f2);
+  border-radius: 22px;
+  padding: 10px;
+  box-shadow:
+    0 10px 30px rgba(255, 105, 180, 0.35),
+    inset 0 0 12px rgba(255, 255, 255, 0.7);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 22px 45px rgba(255, 60, 150, 0.55);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 10px;
+  color: #5a0033;
+  font-size: 14px;
+}
+
+/* NEXT BUTTON */
+#nextBtn {
+  display: none;
+  margin-top: 35px;
+}
+
+#nextBtn button {
+  padding: 14px 36px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #ff7abf, #ff3d9a);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255,105,180,0.45);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  h1 { font-size: 36px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="bgMusic">
+  <source src="sound.mp3" type="audio/mp3">
+</audio>
+
+<!-- TAP TO START -->
+<div id="startOverlay">
+  <div class="startBox">
+    <div class="heart">💖</div>
+    <p>Tap here</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="wrapper">
+  <h1>खूबसूरती दूसरी चीज है पहली आप हैं</h1>
+  <div class="subtitle">
+    💖
+  </div>
+
+  <div class="gallery">
+    <div class="card"><img src="img1.jpg"><div class="caption">This one ❤️</div></div>
+    <div class="card"><img src="img2.jpg"><div class="caption">Still my favourite 😌</div></div>
+    <div class="card"><img src="img3.jpg"><div class="caption">Can’t explain this 💫</div></div>
+    <div class="card"><img src="img4.jpg"><div class="caption">Just… wow 🫶</div></div>
+  </div>
+
+  <!-- NEXT BUTTON -->
+  <div id="nextBtn">
+    <button onclick="location.href='note.html'">
+      One last thing 💌
+    </button>
+  </div>
+</div>
+
+<script>
+const overlay = document.getElementById("startOverlay");
+const music = document.getElementById("bgMusic");
+const nextBtn = document.getElementById("nextBtn");
+
+overlay.addEventListener("click", function () {
+  music.play();
+  overlay.style.display = "none";
+});
+
+// SHOW BUTTON AFTER AUDIO ENDS
+music.addEventListener("ended", function () {
+  nextBtn.style.display = "block";
+});
+</script>
+
+</body>
+</html>

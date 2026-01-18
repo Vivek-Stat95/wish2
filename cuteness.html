@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuteness Test 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, #fff0f6, #ffe6f0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-weight: 500;
+    }
+
+    h1, h2 {
+      font-weight:700;
+    }
+
+    .card {
+        width: 85%;
+        max-width: 380px;
+        padding: 30px;
+        border-radius: 18px;
+        background: rgba(255, 0, 90, 0.08);
+        box-shadow: 0 0 40px rgba(255, 80, 150, 0.25);
+        text-align: center;
+    }
+
+    .title{
+        opacity: 0.85;
+        margin-bottom: 15px;
+    }
+
+    .percent {
+      font-size: 48px;
+      color: #ff5fa2;
+      margin-bottom: 15px;
+      
+    }
+
+    .progress-bg {
+      width: 100%;
+      height: 14px;
+      background: #331018;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .progress{
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff5fa2, #ff85c1);
+      transition: width 0.1s linear;
+    }
+
+    .warning {
+      display: none;
+      margin-top: 15px;
+      font-size: 14px;
+      color: red;
+      letter-spacing: 1px;
+      /* animation: shake 0.5s infinite; */
+    }
+
+    .next-btn {
+    display: none;
+    margin-top: 25px;
+    padding: 12px 26px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(90deg, #ff5fa2, #ff2f92);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(255, 80, 150, 0.45);
+  }
+
+  </style>
+</head>
+
+
+<body>
+    <div class="card">
+      <div class="title">Measuring your cuteness...</div>
+      <div class="percent" id="percent">0%</div>
+  
+      <div class="progress-bg">
+        <div class="progress" id="bar"></div>
+      </div>
+  
+      <div class="warning" id="warning">
+        WARNING ⚠️ : CUTENESS OVERLOADED <br>
+        Khi Khi &#128518 <br>
+        Mai to majak kr rha tha <br>
+        Apki cuteness ko measure krne ke liye aaj tak koi scale hi bni Suhani <br>
+        You are TOO CUTE TO HANDLE
+      </div>
+
+      <button class="next-btn" id="nextBtn" onclick="goNext()">
+        Aur Jan ne ke liye click kijiye 💖
+      </button>
+    </div>
+  
+    <script>
+        let value = 0;
+        const bar = document.getElementById("bar");
+        const percent = document.getElementById("percent");
+        const warning = document.getElementById("warning");
+        const nextBtn = document.getElementById("nextBtn");
+      
+        const timer = setInterval(() => {
+          value++;
+          bar.style.width = Math.min(value, 120) + "%";
+          percent.textContent = value + "%";
+      
+          if (value >= 120) {
+            clearInterval(timer);
+            warning.style.display = "block";
+            nextBtn.style.display = "inline-block";
+          }
+        }, 40);
+      
+        function goNext() {
+          window.location.href = "reveal.html";
+        }
+      </script>
+      </body>
+      </html>
+
+
+
+

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Just For You</title>
+
+<style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, #fff0f6, #ffe6f0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-weight: 500;
+    }
+
+    h1, h2 {
+      font-weight:700;
+    }
+
+  .container {
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    padding-top: 40px;
+  }
+
+  .heart {
+    font-size: 60px;
+    animation: beat 1.2s infinite;
+  }
+
+  @keyframes beat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  h1 {
+    color: #ff5fa2;
+    margin: 15px 0 5px;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 42px;
+  }
+
+  p {
+    opacity: 0.75;
+    margin-bottom: 30px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .box {
+    background: rgba(255, 90, 150, 0.12);
+    border-radius: 14px;
+    padding: 25px 10px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 90, 150, 0.25);
+    transition: transform 0.2s;
+  }
+
+  .box:hover {
+    transform: scale(1.05);
+  }
+
+  .hidden-text {
+    display: none;
+    margin-top: 10px;
+    color: red;
+    font-size: 14px;
+  }
+
+  .know-btn {
+  display: block;
+  margin: 35px auto 0;
+  padding: 14px 32px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(90deg, #ff7abf, #ff3d9a);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+
+ @keyframes softPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(255,80,150,0.6); }
+  50% { transform: scale(1.05); box-shadow: 0 0 18px rgba(255,80,150,0.8); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(255,80,150,0.6); }
+}
+
+.know-btn.active {
+  animation: softPulse 1.6s infinite;
+}
+
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="heart">❤️</div>
+    <h1>Ye sab aapke liye</h1>
+    <p>Niche diye huye boxes pr click kijiye.</p>
+
+    <div class="grid">
+      <div class="box" onclick="reveal(this)">
+        💌 Yeah
+        <div class="hidden-text">You are one of the softest souls I know</div>
+      </div>
+
+      <div class="box" onclick="reveal(this)">
+        💖 Once more
+        <div class="hidden-text">Aap bot hi pyari hain Suhani.</div>
+      </div>
+
+      <div class="box" onclick="reveal(this)">
+        ✨ Good girl
+        <div class="hidden-text">I really appreciate how you always check in.</div>
+      </div>
+
+      <div class="box" onclick="reveal(this)">
+        🌸 One last time
+        <div class="hidden-text">Aapke aage kucch bolne se phle mujhe kucch sonchna nhi pdta.</div>
+      </div>
+    </div>
+    <button class="know-btn" id="knowBtn" disabled onclick="goNote()">
+        Know more 💌
+      </button>
+      
+  </div>
+
+  <script>
+    let openedCount = 0;
+    const totalBoxes = document.querySelectorAll(".box").length;
+    const knowBtn = document.getElementById("knowBtn");
+  
+    function reveal(box) {
+      const text = box.querySelector(".hidden-text");
+  
+      if (text.style.display !== "block") {
+        text.style.display = "block";
+        box.firstChild.textContent = "💗";
+        openedCount++;
+  
+        if (openedCount === totalBoxes) {
+          knowBtn.disabled = false;
+          knowBtn.style.opacity = "1";
+          knowBtn.style.pointerEvents = "auto";
+          knowBtn.classList.add("active");
+        }
+      }
+    }
+  
+    function goNote() {
+      window.location.href = "questions.html";
+    }
+  </script>
+  
+</body>
+</html>
